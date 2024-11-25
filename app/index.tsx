@@ -3,29 +3,29 @@ import { View, Text, FlatList, TextInput, Button, TouchableOpacity, StyleSheet, 
 import { Platform } from "react-native";
 
 export default function Index() {
-  interface Planet {
+  interface Pais {
     id: number;
     name: string;
     description: string;
-    moons: number; 
-    moon_names: string[] | undefined;
-    image: string;
+    goals: number; 
+    points: number;
+    logo: string;
   }
 
   const baseUrl = "http://161.35.143.238:8000/mroman";
-  const [planets, setPlanets] = useState<Planet[]>([]);
-  const [currentPlanet, setCurrentPlanet] = useState<Planet | null>(null); // Planeta seleccionado
+  const [paises, setPaises] = useState<Pais[]>([]);
+  const [currentPais, setCurrentPais] = useState<Pais | null>(null); 
   const [isAdding, setIsAdding] = useState(false); // Modo agregar/editar
-  const [form, setForm] = useState<{ name: string; description: string;  moons: number;
-    moon_names: string[]; image: string; }>({
+  const [form, setForm] = useState<{ name: string; description: string;  goals: number;
+    points: number; logo: string; }>({
     name: "",
     description: "",
-    moons: 0,
-    moon_names: [],
-    image: "",
+    goals: 0,
+    points: 0,
+    logo: "",
   });
-  const [originalPlanets, setOriginalPlanets] = useState<Planet[]>([]);
-  // Estilos para el botón de agregar planeta
+  const [originalPaises, setOriginalPaises] = useState<Pais[]>([]);
+  // Estilos para el botón de agregar pais
   const platformStyles = StyleSheet.create({
     addButton: {
       backgroundColor: Platform.OS === "android" ? "blue" : "green",
@@ -40,7 +40,7 @@ export default function Index() {
   });
 
   
-  // Obtener planetas desde el backend al cargar el componente
+  // Obtener paises desde el backend al cargar el componente
   useEffect(() => {
     fetch( baseUrl, {
       headers: {
@@ -49,21 +49,21 @@ export default function Index() {
     })
       .then((response) => response.json())
       .then((data) => 
-        {setPlanets(data);
-         setOriginalPlanets(data);
+        {setPaises(data);
+         setOriginalPaises(data);
         })
-      .catch((error) => console.error("Error al obtener los planetas:", error));
+      .catch((error) => console.error("Error al obtener los paises:", error));
   }, []);
 
-  // Función para ordenar por cantidad de lunas (mayor a menor)
-  const sortByMoons = () => {
-    const sortedPlanets = [...planets].sort((a, b) => b.moons - a.moons);
-    setPlanets(sortedPlanets);
+  // Función para ordenar por cantidad de goles (mayor a menor)
+  const sortByGoals = () => {
+    const sortedPaises = [...paises].sort((a, b) => b.goals - a.goals);
+    setPaises(sortedPaises);
   };
 
   // Función para restablecer el orden original
   const resetOrder = () => {
-    setPlanets(originalPlanets);
+    setPaises(originalPaises);
   };
 
   // Función para manejar el formulario
@@ -71,15 +71,17 @@ export default function Index() {
     setForm({ ...form, [field]: value });
   };
  
-  const renderMoons = (moons: string[] | undefined) => {
-    return moons && moons.length > 0 ? moons.join(", ") : "Ninguna";
+  /*
+  const renderPoints = (goals: string[] | undefined) => {
+    return goals && goals.length > 0 ? goals.join(", ") : "Ninguna";
   };
+  */
 
-  // Agregar o editar planeta
-  const savePlanet = () => {
-    const method = currentPlanet ? "PUT" : "POST";
-    const url = currentPlanet
-      ? `${baseUrl}/${currentPlanet.id}`
+  // Agregar o editar pais
+  const savePais = () => {
+    const method = currentPais ? "PUT" : "POST";
+    const url = currentPais
+      ? `${baseUrl}/${currentPais.id}`
       : baseUrl;
 
     fetch(url, {
@@ -88,85 +90,86 @@ export default function Index() {
       body: JSON.stringify({
         name: form.name,
         description: form.description,
-        moon: form.moons,
-        moon_names: form.moon_names,
-        image: form.image,
+        goals: form.goals,
+        points: form.points,
+        logo: form.logo,
 
       }),
     })
       .then((response) => response.json())
-      .then((savedPlanet) => {
-        if (currentPlanet) {
-          // Actualizar planeta existente
-          setPlanets((prev) =>
-            prev.map((planet) =>
-              planet.id === currentPlanet.id ? savedPlanet : planet
+      .then((savedPais) => {
+        if (currentPais) {
+          // Actualizar pais existente
+          setPaises((prev) =>
+            prev.map((pais) =>
+              pais.id === currentPais.id ? savedPais : pais
             )
           );
         } else {
-          // Agregar nuevo planeta
-          setPlanets((prev) => [...prev, savedPlanet]);
+          // Agregar nuevo pais
+          setPaises((prev) => [...prev, savedPais]);
         }
-        setForm({ name: "", description: "", moons: 0, moon_names: [], image: "" });
-        setCurrentPlanet(null);
+        setForm({ name: "", description: "", goals: 0, points: 0, logo: "" });
+        setCurrentPais(null);
         setIsAdding(false);
       })
-      .catch((error) => console.error("Error al guardar el planeta:", error));
+      .catch((error) => console.error("Error al guardar el pais:", error));
   };
   
-  // Eliminar planeta
-  const deletePlanet = (id: number) => {
+  // Eliminar pais
+  const deletePais = (id: number) => {
     fetch(`${baseUrl}/${id}`, { method: "DELETE", headers: {
       "bypass-tunnel-reminder": "true"
     }})
       .then(() => {
-        setPlanets((prev) => prev.filter((planet) => planet.id !== id));
-        setCurrentPlanet(null);
+        setPaises((prev) => prev.filter((pais) => pais.id !== id));
+        setCurrentPais(null);
       })
-      .catch((error) => console.error("Error al eliminar el planeta:", error));
+      .catch((error) => console.error("Error al eliminar el pais:", error));
   };
 
     
   // Volver a la lista
   const goBack = () => {
-    setCurrentPlanet(null);
+    setCurrentPais(null);
     setIsAdding(false);
   };
 
   
   return (
     <View style={styles.container}>
-      {/* Pantalla de listado de planetas */}
-      {!currentPlanet && !isAdding && (
+      {/* Pantalla de listado de paises */}
+      {!currentPais && !isAdding && (
         <View>
-          <Text style={styles.title}>Planetas</Text>
+          <Text style={styles.title}>Paises</Text>
           <View style={styles.sortButtonsContainer}>
-            <Button title="Ordenar por Lunas" onPress={sortByMoons} />
+            <Button title="Ordenar por goles" onPress={sortByGoals} />
             <Button title="Restablecer Orden" onPress={resetOrder} />
           </View>
           <FlatList
-            data={planets}
+            data={paises}
             keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }: { item: Planet }) => (
+            renderItem={({ item }: { item: Pais }) => (
               <TouchableOpacity
-                style={styles.planetItem}
-                onPress={() => setCurrentPlanet(item)}
+                style={styles.paisItem}
+                onPress={() => setCurrentPais(item)}
               >
-                <Image source={{ uri: item.image }} style={styles.planetImage} />
-                <Text style={styles.planetName}>{item.name}</Text>
+                <Image source={{ uri: item.logo }} style={styles.paisLogo} />
+                <Text style={styles.paisName}>{item.name}</Text>
               </TouchableOpacity>
             )}
           />
-          {/*<Button title="Agregar Planeta" onPress={() => setIsAdding(true)} />*/}
+          {/*<Button title="Agregar Pais" onPress={() => setIsAdding(true)} />*/}
         
           <TouchableOpacity
             style={platformStyles.addButton}
             onPress={() => setIsAdding(true)}
           >
             <Text style={platformStyles.addButtonText}>
-              {Platform.OS === "android" ? "Nuevo Planeta" : "Crear Planeta"}
+              {Platform.OS === "android" ? "Nuevo Pais" : "Crear Pais"}
             </Text>
-          </TouchableOpacity>;
+          </TouchableOpacity>
+
 
 
         
@@ -174,24 +177,24 @@ export default function Index() {
 
       )}
 
-      {/* Pantalla de detalles del planeta */}
-      {currentPlanet && !isAdding && (
+      {/* Pantalla de detalles del Pais */}
+      {currentPais && !isAdding && (
         <View>
-          <Text style={styles.title}>Detalles del Planeta</Text>
-          <Image source={{ uri: currentPlanet.image }} style={styles.planetImage} />
-          <Text>Nombre: {currentPlanet.name}</Text>
-          <Text>Descripción: {currentPlanet.description}</Text>
-          <Text>Número de lunas: {currentPlanet.moons}</Text>
-          <Text>Lunas: {renderMoons(currentPlanet.moon_names)}</Text>
+          <Text style={styles.title}>Detalles del Pais</Text>
+          <Image source={{ uri: currentPais.logo }} style={styles.paisLogo} />
+          <Text>Nombre: {currentPais.name}</Text>
+          <Text>Descripción: {currentPais.description}</Text>
+          <Text>Cantidad de goles: {currentPais.goals}</Text>
+          <Text>Puntos: {currentPais.points}</Text>
           <Button
             title="Editar"
             onPress={() => {
               setForm({
-                name: currentPlanet.name || "",
-                description: currentPlanet.description || "",
-                moons: currentPlanet.moons || 0,
-                moon_names: currentPlanet.moon_names || [],
-                image: currentPlanet.image || "",
+                name: currentPais.name || "",
+                description: currentPais.description || "",
+                goals: currentPais.goals || 0,
+                points: currentPais.points || 0,
+                logo: currentPais.logo || "",
               });
               setIsAdding(true);
             }}
@@ -199,17 +202,17 @@ export default function Index() {
           <Button
             title="Eliminar"
             color="red"
-            onPress={() => deletePlanet(currentPlanet.id)}
+            onPress={() => deletePais(currentPais.id)}
           />
           <Button title="Volver" onPress={goBack} />
         </View>
       )}
 
-      {/* Pantalla para agregar/editar planeta */}
+      {/* Pantalla para agregar/editar pais */}
       {isAdding && (
         <View>
           <Text style={styles.title}>
-            {currentPlanet ? "Editar Planeta" : "Agregar Planeta"}
+            {currentPais ? "Editar Pais" : "Agregar Pais"}
           </Text>
           <TextInput
             placeholder="Nombre"
@@ -224,33 +227,32 @@ export default function Index() {
             style={styles.input}
           />
 
-          {/* Campo para número de lunas */}
           <TextInput
-            placeholder="Número de lunas"
-            value={form.moons.toString()}
-            onChangeText={(text) => handleFormChange("moons", parseInt(text) || 0)}
+            placeholder="Cantidad de Goles"
+            value={form.goals.toString()}
+            onChangeText={(text) => handleFormChange("goals", parseInt(text) || 0)}
             keyboardType="numeric"
             style={styles.input}
           />
 
-          {/* Campo para nombres de lunas */}
+          {/* Campo para nombres los puntos */}
           <TextInput
-            placeholder="Nombres de las lunas (separadas por comas)"
-            value={form.moon_names.join(", ")}
-            onChangeText={(text) => handleFormChange("moon_names", text.split(",").map((name) => name.trim()))}
+            placeholder="Cantidad de puntos"
+            value={form.points.toString()}
+            onChangeText={(text) => handleFormChange("points", parseInt(text) || 0)}
             style={styles.input}
           />
 
           {/* Campo para URL de la imagen */}
           <TextInput
             placeholder="URL de la imagen"
-            value={form.image}
-            onChangeText={(text) => handleFormChange("image", text)}
+            value={form.logo}
+            onChangeText={(text) => handleFormChange("logo", text)}
             style={styles.input}
           />
 
 
-          <Button title="Guardar" onPress={savePlanet} />
+          <Button title="Guardar" onPress={savePais} />
           <Button title="Cancelar" onPress={goBack} />
         </View>
       )}
@@ -271,20 +273,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
   },
-  planetItem: {
+  paisItem: {
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#3d88e9",
   },
-  planetImage: {
+  paisLogo: {
     width: 50,
     height: 50,
     marginRight: 10,
     borderRadius: 25,
   },
-  planetName: {
+  paisName: {
     fontSize: 20,
   },
   input: {

@@ -1,124 +1,84 @@
 {
-  "planets": [
+  "paises": [
     {
-      "id": 1,
-      "name": "Mercury",
-      "description": "The smallest and closest planet to the Sun in the Solar System.",
-      "moons": 0,
-      "moon_names": [],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg"
+      "id": "1",
+      "name": "Argentina",
+      "description": "Actual campeona del mundo y una de las selecciones más fuertes de Sudamérica.",
+      "goals": 28,
+      "points": 34,
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/7/77/Argentina_Football_Association_logo.svg"
     },
     {
-      "id": 2,
-      "name": "Venus",
-      "description": "The second planet from the Sun, known for its thick and toxic atmosphere.",
-      "moons": 0,
-      "moon_names": [],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg"
+      "id": "2",
+      "name": "Brasil",
+      "description": "Conocida como la Canarinha, es la selección con más títulos de la Copa del Mundo.",
+      "goals": 30,
+      "points": 35,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/4/4b/Brazil_Football_Confederation_logo.svg"
     },
     {
-      "id": 3,
-      "name": "Earth",
-      "description": "The third planet from the Sun and the only known planet to support life.",
-      "moons": 1,
-      "moon_names": [
-        "Moon"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+      "id": "3",
+      "name": "Uruguay",
+      "description": "La Celeste, bicampeona del mundo y con una rica historia en el fútbol sudamericano.",
+      "goals": 18,
+      "points": 28,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/f/f1/AUF_uruguay.svg"
     },
     {
-      "id": 4,
-      "name": "Mars",
-      "description": "The fourth planet from the Sun, often called the 'Red Planet'.",
-      "moons": 2,
-      "moon_names": [
-        "Phobos",
-        "Deimos"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+      "id": "4",
+      "name": "Colombia",
+      "description": "La Tricolor, conocida por su talento y creatividad en el juego.",
+      "goals": 22,
+      "points": 30,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/a/a2/Colombia_football_federation_logo.svg"
     },
     {
-      "id": 5,
-      "name": "Jupiter",
-      "description": "The largest planet in the Solar System, a gas giant with a famous Great Red Spot.",
-      "moons": 95,
-      "moon_names": [
-        "Io",
-        "Europa",
-        "Ganymede",
-        "Callisto",
-        "Amalthea",
-        "Himalia",
-        "Elara",
-        "Pasiphae",
-        "Sinope",
-        "Lysithea",
-        "Carme",
-        "Ananke",
-        "Leda",
-        "Thebe",
-        "Adrastea",
-        "Metis"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg"
+      "id": "5",
+      "name": "Chile",
+      "description": "La Roja, con un legado de lucha y pasión en el fútbol.",
+      "goals": 15,
+      "points": 24,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/e/e7/Chile_Football_Logo.svg"
     },
     {
-      "id": 6,
-      "name": "Saturn",
-      "description": "The sixth planet known for its extensive ring system.",
-      "moons": 145,
-      "moon_names": [
-        "Titan",
-        "Enceladus",
-        "Mimas",
-        "Iapetus",
-        "Rhea",
-        "Tethys",
-        "Dione",
-        "Hyperion",
-        "Phoebe",
-        "Janus",
-        "Epimetheus"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg"
+      "id": "6",
+      "name": "Ecuador",
+      "description": "La Tri, un equipo en crecimiento con jóvenes talentos.",
+      "goals": 20,
+      "points": 25,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/1/1d/Ecuadorian_Football_Federation_logo.svg"
     },
     {
-      "id": 7,
-      "name": "Uranus",
-      "description": "An ice giant with a blue-green color, the seventh planet from the Sun.",
-      "moons": 27,
-      "moon_names": [
-        "Miranda",
-        "Ariel",
-        "Umbriel",
-        "Titania",
-        "Oberon",
-        "Caliban",
-        "Sycorax",
-        "Prospero",
-        "Setebos",
-        "Stephano"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg"
+      "id": "7",
+      "name": "Paraguay",
+      "description": "La Albirroja, un equipo que se destaca por su garra y defensas férreas.",
+      "goals": 12,
+      "points": 20,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/54/Paraguay_Football_Association_logo.svg"
     },
     {
-      "id": 8,
-      "name": "Neptune",
-      "description": "The eighth and farthest known planet in the Solar System, another ice giant.",
-      "moons": 14,
-      "moon_names": [
-        "Triton",
-        "Nereid",
-        "Naiad",
-        "Thalassa",
-        "Despina",
-        "Galatea",
-        "Larissa",
-        "Proteus",
-        "Halimede",
-        "Psamathe"
-      ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
+      "id": "8",
+      "name": "Perú",
+      "description": "La Blanquirroja, con un estilo de juego técnico y estratégico.",
+      "goals": 10,
+      "points": 18,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/d/df/Peru_Football_Federation.svg"
+    },
+    {
+      "id": "9",
+      "name": "Venezuela",
+      "description": "La Vinotinto, un equipo en desarrollo que busca consolidarse en Sudamérica.",
+      "goals": 14,
+      "points": 22,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/e/ef/Venezuela_Football_Federation_logo.svg"
+    },
+    {
+      "id": "10",
+      "name": "Bolivia",
+      "description": "La Verde, un equipo que da lo mejor de sí especialmente en la altura de La Paz.",
+      "goals": 8,
+      "points": 15,
+      "logo": "https://upload.wikimedia.org/wikipedia/en/d/d0/Bolivia_Football_Federation_logo.svg"
     }
   ]
 }
