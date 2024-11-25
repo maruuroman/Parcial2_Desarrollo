@@ -1,0 +1,124 @@
+{
+  "planets": [
+    {
+      "id": 1,
+      "name": "Mercury",
+      "description": "The smallest and closest planet to the Sun in the Solar System.",
+      "moons": 0,
+      "moon_names": [],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Venus",
+      "description": "The second planet from the Sun, known for its thick and toxic atmosphere.",
+      "moons": 0,
+      "moon_names": [],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Earth",
+      "description": "The third planet from the Sun and the only known planet to support life.",
+      "moons": 1,
+      "moon_names": [
+        "Moon"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Mars",
+      "description": "The fourth planet from the Sun, often called the 'Red Planet'.",
+      "moons": 2,
+      "moon_names": [
+        "Phobos",
+        "Deimos"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Jupiter",
+      "description": "The largest planet in the Solar System, a gas giant with a famous Great Red Spot.",
+      "moons": 95,
+      "moon_names": [
+        "Io",
+        "Europa",
+        "Ganymede",
+        "Callisto",
+        "Amalthea",
+        "Himalia",
+        "Elara",
+        "Pasiphae",
+        "Sinope",
+        "Lysithea",
+        "Carme",
+        "Ananke",
+        "Leda",
+        "Thebe",
+        "Adrastea",
+        "Metis"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Saturn",
+      "description": "The sixth planet known for its extensive ring system.",
+      "moons": 145,
+      "moon_names": [
+        "Titan",
+        "Enceladus",
+        "Mimas",
+        "Iapetus",
+        "Rhea",
+        "Tethys",
+        "Dione",
+        "Hyperion",
+        "Phoebe",
+        "Janus",
+        "Epimetheus"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Uranus",
+      "description": "An ice giant with a blue-green color, the seventh planet from the Sun.",
+      "moons": 27,
+      "moon_names": [
+        "Miranda",
+        "Ariel",
+        "Umbriel",
+        "Titania",
+        "Oberon",
+        "Caliban",
+        "Sycorax",
+        "Prospero",
+        "Setebos",
+        "Stephano"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Neptune",
+      "description": "The eighth and farthest known planet in the Solar System, another ice giant.",
+      "moons": 14,
+      "moon_names": [
+        "Triton",
+        "Nereid",
+        "Naiad",
+        "Thalassa",
+        "Despina",
+        "Galatea",
+        "Larissa",
+        "Proteus",
+        "Halimede",
+        "Psamathe"
+      ],
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
+    }
+  ]
+}
