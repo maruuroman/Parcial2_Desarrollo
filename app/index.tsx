@@ -141,11 +141,19 @@ export default function Index() {
       {/* Pantalla de listado de paises */}
       {!currentPais && !isAdding && (
         <View>
-          <Text style={styles.title}>Paises</Text>
+          <Text style={styles.title}>Eliminatorias Sudamericanas</Text>
           <View style={styles.sortButtonsContainer}>
             <Button title="Ordenar por goles" onPress={sortByGoals} />
             <Button title="Restablecer Orden" onPress={resetOrder} />
           </View>
+          <TouchableOpacity
+            style={platformStyles.addButton}
+            onPress={() => setIsAdding(true)}
+          >
+            <Text style={platformStyles.addButtonText}>
+              {Platform.OS === "android" ? "Nuevo Pais" : "Crear Pais"}
+            </Text>
+          </TouchableOpacity>
           <FlatList
             data={paises}
             keyExtractor={(item) => item.id.toString()}
@@ -160,19 +168,7 @@ export default function Index() {
             )}
           />
           {/*<Button title="Agregar Pais" onPress={() => setIsAdding(true)} />*/}
-        
-          <TouchableOpacity
-            style={platformStyles.addButton}
-            onPress={() => setIsAdding(true)}
-          >
-            <Text style={platformStyles.addButtonText}>
-              {Platform.OS === "android" ? "Nuevo Pais" : "Crear Pais"}
-            </Text>
-          </TouchableOpacity>
-
-
-
-        
+                
         </View>
 
       )}
