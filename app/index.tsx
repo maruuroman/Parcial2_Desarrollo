@@ -63,8 +63,9 @@ export default function Index() {
 
   // Función para restablecer el orden original
   const resetOrder = () => {
-    setPaises(originalPaises);
+    setPaises([...originalPaises]);
   };
+  
 
   // Función para manejar el formulario
   const handleFormChange = (field: keyof typeof form, value: any) => {
@@ -105,9 +106,13 @@ export default function Index() {
               pais.id === currentPais.id ? savedPais : pais
             )
           );
+          setOriginalPaises((prev) =>
+            prev.map((pais) => (pais.id === currentPais.id ? savedPais : pais))
+          );
         } else {
           // Agregar nuevo pais
           setPaises((prev) => [...prev, savedPais]);
+          setOriginalPaises((prev) => [...prev, savedPais]);
         }
         setForm({ name: "", description: "", goals: 0, points: 0, logo: "" });
         setCurrentPais(null);
@@ -123,6 +128,7 @@ export default function Index() {
     }})
       .then(() => {
         setPaises((prev) => prev.filter((pais) => pais.id !== id));
+        setOriginalPaises((prev) => prev.filter((pais) => pais.id !== id));
         setCurrentPais(null);
       })
       .catch((error) => console.error("Error al eliminar el pais:", error));
